@@ -3,7 +3,12 @@
 
 
 def test_fibonacci_1():
-    """test_fib_1 function."""
+    """Test_fib_1 with value 0."""
     from series import fibonacci
     assert fibonacci(1) == 0
-    # assert fibonacci(7) == 8
+
+
+def test_fibonacci_2():
+    """Test_fib_2 with value 8."""
+    from series import fibonacci
+    assert fibonacci(7) == 8
