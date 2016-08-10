@@ -12,15 +12,15 @@ def fibonacci(n):
             fib_list.append(first + second)
         return fib_list[n - 1]
     elif n == 0:
-        return None
+        raise ValueError("Bad Input.")
     else:
-        return None
+        raise ValueError("Bad Input.")
 
 
 def lucas(n):
     """Find nth in Lucas sequence."""
-    if n == 0 or not isinstance(n, int):
-        return None
+    if not isinstance(n, int) or n <= 0:
+        raise ValueError
     elif n == 1:
         return 2
     elif n == 2:
@@ -39,9 +39,9 @@ def sum_series(n, f_num=0, s_num=1):
             sum_list.append(first + second)
         return sum_list[n - 1]
     elif n == 0:
-        return None
+        raise ValueError
     else:
-        return None
+        raise ValueError
 
 
 if __name__ == '__main__':
@@ -59,3 +59,6 @@ if __name__ == '__main__':
     print(u"You can also execute sum_series with just an n argument and it will default to a Fibonacci number output:")
     print(u">>> sum_series(6)")
     print(sum_series(6))
+    print(u"This test that shows that our functions raise value errors on bad inputs.")
+    print(u">>> fibonacci('taco')")
+    print(fibonacci('taco'))

@@ -3,7 +3,6 @@
 import pytest
 
 FIBONACCI_TABLE = [
-    (0, None),
     (1, 0),
     (2, 1),
     (3, 1),
@@ -15,7 +14,6 @@ FIBONACCI_TABLE = [
 ]
 
 LUCAS_TABLE = [
-    (0, None),
     (1, 2),
     (2, 1),
     (3, 3),
@@ -27,9 +25,7 @@ LUCAS_TABLE = [
 
 SUM_SERIES_TABLE = [
     (5, 7, 4, 26),
-    (4, 3, 4, 11),
-    (0, 12, 14, None),
-    (-5, 3, 4, None)
+    (4, 3, 4, 11)
 ]
 
 
@@ -55,13 +51,22 @@ def test_fibonacci_param(n, result):
 def test_fibonacci_not_int():
     """Test for not integer inputs."""
     from series import fibonacci
-    assert fibonacci('taco') is None
+    with pytest.raises(ValueError):
+        fibonacci('taco')
 
 
 def test_fibonacci_negatives():
     """Test for rejecting negative inputs."""
     from series import fibonacci
-    assert fibonacci(-1) is None
+    with pytest.raises(ValueError):
+        fibonacci(-1)
+
+
+def test_fibonacci_zero():
+    """Test for rejecting 0 input."""
+    from series import fibonacci
+    with pytest.raises(ValueError):
+        fibonacci(0)
 
 
 def test_lucas_1():
@@ -82,6 +87,27 @@ def test_lucas_7():
     assert lucas(7) == 18
 
 
+def test_lucas_taco():
+    """Test lucas with taco input."""
+    from series import lucas
+    with pytest.raises(ValueError):
+        lucas('taco')
+
+
+def test_lucas_negative():
+    """Test lucas with negative input."""
+    from series import lucas
+    with pytest.raises(ValueError):
+        lucas(-5)
+
+
+def test_lucas_zero():
+    """Test lucas with zero input."""
+    from series import lucas
+    with pytest.raises(ValueError):
+        lucas(0)
+
+
 @pytest.mark.parametrize('n, result', LUCAS_TABLE)
 def test_lucas_params(n, result):
     """Test lucas function using the LUCAS_TABLE."""
@@ -100,3 +126,24 @@ def test_sum_param(n, a, b, result):
     """Test sum_series function against SUM_SERIES_TABLE."""
     from series import sum_series
     assert sum_series(n, a, b) == result
+
+
+def test_sum_series_0():
+    """Test sum_series with 0 input."""
+    from series import sum_series
+    with pytest.raises(ValueError):
+        sum_series(0, 12, 14)
+
+
+def test_sume_series_negative():
+    """Test sum_series with negative."""
+    from series import sum_series
+    with pytest.raises(ValueError):
+        sum_series(-5, 3, 4)
+
+
+def test_sum_series_taco():
+    """Test sum_series with a taco."""
+    from series import sum_series
+    with pytest.raises(ValueError):
+        sum_series('taco')
