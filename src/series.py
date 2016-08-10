@@ -19,8 +19,9 @@ def fibonacci(n):
 
 def lucas(n):
     """Find nth in Lucas sequence."""
-    if n == 1:
+    if n <= 1:
         return 2
-    if n == 2:
+    elif n == 2:
         return 1
-        
+    else:
+        return lucas(n - 1) + lucas(n - 2)

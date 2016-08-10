@@ -67,3 +67,9 @@ def test_lucas_2():
     """Test lucas function with input 2."""
     from series import lucas
     assert lucas(2) == 1
+
+
+def test_lucas_7():
+    """Test lucas with input 7."""
+    from series import lucas
+    assert lucas(7) == 18
