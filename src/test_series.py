@@ -51,21 +51,21 @@ def test_fibonacci_param(n, result):
 def test_fibonacci_not_int():
     """Test for not integer inputs."""
     from series import fibonacci
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         fibonacci('taco')
 
 
 def test_fibonacci_negatives():
     """Test for rejecting negative inputs."""
     from series import fibonacci
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         fibonacci(-1)
 
 
 def test_fibonacci_zero():
     """Test for rejecting 0 input."""
     from series import fibonacci
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         fibonacci(0)
 
 
@@ -90,21 +90,21 @@ def test_lucas_7():
 def test_lucas_taco():
     """Test lucas with taco input."""
     from series import lucas
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         lucas('taco')
 
 
 def test_lucas_negative():
     """Test lucas with negative input."""
     from series import lucas
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         lucas(-5)
 
 
 def test_lucas_zero():
     """Test lucas with zero input."""
     from series import lucas
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         lucas(0)
 
 
@@ -131,19 +131,19 @@ def test_sum_param(n, a, b, result):
 def test_sum_series_0():
     """Test sum_series with 0 input."""
     from series import sum_series
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         sum_series(0, 12, 14)
 
 
 def test_sume_series_negative():
     """Test sum_series with negative."""
     from series import sum_series
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         sum_series(-5, 3, 4)
 
 
 def test_sum_series_taco():
     """Test sum_series with a taco."""
     from series import sum_series
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         sum_series('taco')
